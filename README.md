@@ -2,19 +2,19 @@
 A RESTful API for managing a bookstore, including user authentication, author, and book management.
 
 # Configuration
-- Step 1: Create a .env file in the root directory
-- Step 2: Copy the contents of example.env into the .env file
-- tep 3: Update the .env file with your database and JWT configuration:
+### Step 1: Create a .env file in the root directory
+### Step 2: Copy the contents of example.env into the .env file
+### Step 3: Update the .env file with your database and JWT configuration:
     - `DB_DATABASE`: Name of your database
     - `DB_USERNAME`: Database username
     - `DB_PASSWORD`: Database password
     - `JWT_SECRET`: Secret key for JWT
-- Step 4: Import the database
+### Step 4: Import the database
     - Check the root directory for the `bookstore.sql` file and import it into your database.
-- Step 5: Import Postman collection
+### Step 5: Import Postman collection
     - Check the root directory for the `Bookstore.postman_collection.json` file and import it into Postman.
-- Step 6: Install dependencies and start the server
-```sh
+### Step 6: Install dependencies and start the server
+```bash
 npm install -g node-gyp
 yarn or yarn install
 yarn build
