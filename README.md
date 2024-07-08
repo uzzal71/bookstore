@@ -16,8 +16,12 @@ yarn dev
 ```
 
 # Open Browser
-[http://localhost:3000/](http://localhost:3000/){:target="_blank" rel="noopener"}
-<a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a>
+[http://localhost:3000/](http://localhost:3000/)
+
+# Warning: All Privates using rules
+- Step 1: Generate a token by useing sigin route
+- generate token using postman Headers
+- Example Authorization = Bearer token
 
 # Routes
 ### Auth Public Routes
@@ -82,13 +86,23 @@ Optional: /?page=1&per_page=10
 ```
 
 ### Book Private Routes
-```
-Methods: POST
-URL: http://localhost:300/books
+- Create Book
+    - Methods: POST
+    - URL: http://localhost:300/books
+    - Description: Create a new book.
 
-Methods: PUT
-URL: http://localhost:300/books/:id
+- Update Book
+    - Methods: PUT
+    - URL: http://localhost:300/books/:id
+    - Description: Update details of a specific book.
 
-Methods: DELETE
-URL: http://localhost:300/books/:id
-```
+- Delete Book
+    - Methods: DELETE
+    - URL: http://localhost:300/books/:id
+    - Description: Delete a specific book.
+
+
+## Notes
+- Ensure that you have a running instance of your database and the correct configurations in the .env file.
+- Use the Postman collection for testing the API endpoints.
+- Generate a JWT token via the signin route and use it for accessing private routes.
