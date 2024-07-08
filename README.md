@@ -2,6 +2,16 @@
 A RESTful API for managing a bookstore, including user authentication, author, and book management.
 
 # Configuration
+### Step 0: Cloning the Project and Navigating to the Project Directory
+    - Clone the Project Repository:
+        - Use the following command to clone the project repository:
+        ```bash
+        git clone <repository-url>
+        ```
+    - Change to the Project Directory:
+        ```bash
+        cd <project-directory-name>
+        ```
 ### Step 1: Create a .env file in the root directory
 ### Step 2: Copy the contents of example.env into the .env file
 ### Step 3: Update the .env file with your database and JWT configuration:
