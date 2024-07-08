@@ -14,6 +14,10 @@ yarn or yarn install
 yarn build
 yarn dev
 ```
+
+# Open Browser
+http://localhost:3000/[http://localhost:3000/]
+
 # Routes
 ### Auth Public Routes
 ```
