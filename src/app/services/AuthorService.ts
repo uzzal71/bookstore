@@ -2,9 +2,9 @@ import { AuthorRepository } from '@Repositories/AuthorRepository';
 import sequelize from '@Config/database';
 import { ApiError } from '@Utils/errorHandler';
 import { IAuthor, UpdateAuthorData } from '@Entities/IAuthor';
-import { IBook } from '@Entities/IBook';
 import { BookRepository } from '@Repositories/BookRepository';
 import User from '@Models/User';
+import Author from '@Models/Author';
 
 export class AuthorService {
     repository: AuthorRepository;
@@ -56,19 +56,17 @@ export class AuthorService {
         }
     }
 
-    async getBooksByAuthorId(authorId: number): Promise<IBook[]> {
+    async getBooksByAuthorId(pageNo: number, perPage: number, relations: any, conditions: any, hasRelations: boolean, req: any): Promise<any> {
         try {
-            const author = await this.repository.findOne(authorId);
+            const author = await this.repository.findOne(req.params.id);
             if (!author) {
                 throw new ApiError('NOT_FOUND', 404, 'Author not found.');
             }
-            const books = await this.bookRepository.findAllByProperty({ author_id: authorId });
-            return books;
+
+            relations = [{model: Author, as: 'author', attributes: ['id', 'name']}];
+            return await this.bookRepository.findAllWithPagination(pageNo, perPage, relations, conditions, hasRelations, req);
         } catch (error) {
-            if (error instanceof ApiError) {
-                throw error;
-            }
-            throw new ApiError('FETCH_ERROR', 500, 'Unable to fetch books.');
+            throw new ApiError('FIND_ERROR', 500, 'Unable to find authors.');
         }
     }
 

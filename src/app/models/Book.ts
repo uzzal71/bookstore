@@ -30,15 +30,6 @@ class Book extends Model<Book> implements IBook{
 
     @BelongsTo(() => Author)
     author: Author;
-
-    @Column({ type: DataType.VIRTUAL })
-    get author_info(): any {
-        if (this.author) {
-            const authorData = { ...this.author.get() };
-            return authorData;
-        }
-        return {};
-    }
 }
 
 export default Book;

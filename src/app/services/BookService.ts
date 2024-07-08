@@ -1,7 +1,9 @@
 import { BookRepository } from '@Repositories/BookRepository';
-import sequelize from '@Config/database';
+import sequelize from '@Config/database'
+import { Op } from 'sequelize';;
 import { ApiError } from '@Utils/errorHandler';
 import { IBook, UpdateBookData } from '@Entities/IBook';
+import Author from '@Models/Author';
 
 export class BookService {
     repository: BookRepository;
@@ -22,17 +24,22 @@ export class BookService {
         }
     }
 
-    async findAllBooks(): Promise<IBook[]> {
+    async findAllBooks(pageNo: number, perPage: number, relations: any, conditions: any, hasRelations: boolean, req: any): Promise<any> {
         try {
-            const books = await this.repository.findAll();
-            return books;
-        } catch (error) {
-            throw new ApiError('FETCH_ERROR', 500, 'Unable to fetch books.');
-        }
-    }
-
-    async findBooksWithPagination(pageNo: number, perPage: number, relations: any, conditions: any, hasRelations: boolean, req: any): Promise<any> {
-        try {
+            relations = [{model: Author, as: 'author', attributes: ['id', 'name']}];
+            if (req.query.title) {
+                conditions.title = { [Op.like]: `%${req.query.title}%` };
+            }
+    
+            if (req.query.author_name) {
+                if (!relations.includes(Author)) {
+                    relations.push({
+                        model: Author,
+                        where: { name: { [Op.like]: `%${req.query.author_name}%` } },
+                        required: true
+                    });
+                }
+            }
             return await this.repository.findAllWithPagination(pageNo, perPage, relations, conditions, hasRelations, req);
         } catch (error) {
             throw new ApiError('FIND_ERROR', 500, 'Unable to find authors.');
@@ -41,7 +48,7 @@ export class BookService {
 
     async findBookById(bookId: number): Promise<IBook | null> {
         try {
-            const book = await this.repository.findOne(bookId);
+            const book = await this.repository.findOne(bookId, {model: Author, as: 'author', attributes: ['id', 'name']});
             if (!book) {
                 throw new ApiError('NOT_FOUND', 404, 'Book not found.');
             }
@@ -54,12 +61,13 @@ export class BookService {
         }
     }
 
-    async updateBook(bookId: number, bookData: UpdateBookData): Promise<boolean> {
+    async updateBook(bookId: number, bookData: UpdateBookData): Promise<IBook | null> {
         const transaction = await sequelize.transaction();
         try {
-            const updated = await this.repository.update(bookId, bookData as IBook, transaction);
+            await this.repository.update(bookId, bookData as IBook, transaction);
             await transaction.commit();
-            return updated;
+            const book = await this.repository.findOne(bookId, {model: Author, as: 'author', attributes: ['id', 'name']});
+            return book
         } catch (error) {
             await transaction.rollback();
             throw new ApiError('UPDATE_ERROR', 500, 'Unable to update book.');
@@ -75,18 +83,6 @@ export class BookService {
         } catch (error) {
             await transaction.rollback();
             throw new ApiError('DELETE_ERROR', 500, 'Unable to delete book.');
-        }
-    }
-
-    async getBooksByAuthorId(authorId: number): Promise<IBook[]> {
-        try {
-            const books = await this.repository.findAllByProperty({ author_id: authorId });
-            if (!books) {
-                throw new ApiError('NOT_FOUND', 404, 'Books not found for the specified author.');
-            }
-            return books;
-        } catch (error) {
-            throw new ApiError('FETCH_ERROR', 500, 'Unable to fetch books.');
         }
     }
 }

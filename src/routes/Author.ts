@@ -8,10 +8,10 @@ const AuthorInstance = new AuthorController();
 const AuthorRoute  = express.Router();
 
 AuthorRoute.post('/authors', [authenticateToken], AuthorInstance.createAuthor);
-AuthorRoute.get('/authors/:page/:per_page', AuthorInstance.getAllAuthors);
+AuthorRoute.get('/authors', AuthorInstance.getAllAuthors);
 AuthorRoute.get('/authors/:id', [validateId], AuthorInstance.getAuthorById);
 AuthorRoute.put('/authors/:id', [authenticateToken, validateId], AuthorInstance.updateAuthor);
 AuthorRoute.delete('/authors/:id', [authenticateToken, validateId], AuthorInstance.deleteAuthor);
-AuthorRoute.get('/authors/:id/books', [authenticateToken, validateId], AuthorInstance.getBooksByAuthor);
+AuthorRoute.get('/authors/:id/books', [validateId], AuthorInstance.getBooksByAuthor);
 
 export default AuthorRoute;

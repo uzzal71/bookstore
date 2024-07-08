@@ -1,14 +1,14 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { ResponseError } from '@Utils/HttpResponse';
 import { IUser } from '@Entities/IUser';
 import Config from '@/config';
 
-interface AuthRequest extends Request {
-    user?: IUser;
-}
+// interface AuthRequest extends Request {
+//     user?: IUser;
+// }
 
-export const authenticateToken = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const authenticateToken = (req: any, res: Response, next: NextFunction) => {
     const token = req.header('Authorization')?.split(' ')[1];
     if (!token) {
         return ResponseError(res, 401, 'Access Denied. No Token Provided.');

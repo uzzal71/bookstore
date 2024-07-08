@@ -31,8 +31,8 @@ export class AuthorController {
 
     public getAllAuthors = async (_req: Request, res: Response) => {
         try {
-            const pageNo = parseInt(_req.params.page as string, 10) || 1;
-            const perPage = parseInt(_req.params.per_page as string, 10) || 10;
+            const pageNo = parseInt(_req.query.page as string, 10) || 1;
+            const perPage = parseInt(_req.query.per_page as string, 10) || 10;
             const relations = [];
             const conditions = {};
             const hasRelations = true;
@@ -89,13 +89,26 @@ export class AuthorController {
         }
     };
 
-    public getBooksByAuthor = async (req: Request, res: Response) => {
+    public getBooksByAuthor = async (_req: Request, res: Response) => {
         try {
-            const authorId = parseInt(req.params.id, 10);
-            const books = await this.authorService.getBooksByAuthorId(authorId);
-            return ResponseSuccess(res, 200, "Author all books fetched successfully", books);
+            const pageNo = parseInt(_req.query.page as string, 10) || 1;
+            const perPage = parseInt(_req.query.per_page as string, 10) || 10;
+            const relations = [];
+            const conditions = {author_id: _req.params.id};
+            const hasRelations = true;
+
+            const authors = await this.authorService.getBooksByAuthorId(
+                pageNo,
+                perPage,
+                relations,
+                conditions,
+                hasRelations,
+                _req
+            );
+
+            return ResponseSuccess(res, 200, 'Author all books fetched successfully', authors);
         } catch (error: any) {
-            return ResponseError(res, 500, error.message);
+            return ResponseError(res, error.statusCode, error.message);
         }
     };
 
