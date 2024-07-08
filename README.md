@@ -3,13 +3,14 @@ A RESTful API for managing a bookstore, including user authentication, author, a
 
 # Configuration
 ### Step 0: Cloning the Project and Navigating to the Project Directory
-    - Clone the Project Repository:
-        - Use the following command to clone the project repository:
-        ```bash
+- Clone the Project Repository
+    - Use the following command to clone the project repository:
+        ```python
         git clone <repository-url>
         ```
-    - Change to the Project Directory:
-        ```bash
+- Change to the Project Directory
+    - After cloning, navigate to the project directory:
+        ```python
         cd <project-directory-name>
         ```
 ### Step 1: Create a .env file in the root directory
