@@ -17,6 +17,7 @@ yarn dev
 
 # Open Browser
 [http://localhost:3000/](http://localhost:3000/){:target="_blank" rel="noopener"}
+<a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a>
 
 # Routes
 ### Auth Public Routes
