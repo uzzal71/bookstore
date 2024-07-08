@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "5c6df99d-e281-46b1-b1f5-b520f6557e67",
+		"name": "Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3396308"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "tapas71",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/signup",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "tapas71",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/signin",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcm5hbWUiOiJ1enphbDAwNyIsImF1dGhvciI6bnVsbCwiaWF0IjoxNzIwNDQwNTM1LCJleHAiOjE3MjA0NDQxMzV9.sJAsdnThLcUM7yPRGbAQqwMO45LWkCE77ol68JT__ko",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Url}}/profile/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7",
+									"description": "user id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJ1enphbDcxIiwiaWF0IjoxNzIwNDMzNzQ1LCJleHAiOjE3MjA0MzczNDV9._3EXcOZPVHYhf_856EjC0lLgDFuk9xKDZYsDjzpzMqw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "uzzal71",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/profile/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6",
+									"description": "user id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJ1enphbDcxIiwiaWF0IjoxNzIwNDMzNzQ1LCJleHAiOjE3MjA0MzczNDV9._3EXcOZPVHYhf_856EjC0lLgDFuk9xKDZYsDjzpzMqw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Url}}/profile/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6",
+									"description": "user id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "Create new author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidGFwYXM3MSIsImF1dGhvciI6bnVsbCwiaWF0IjoxNzIwNDQ5OTIyLCJleHAiOjE3MjA0NTM1MjJ9.emONyYioByNQwyeSVSCA4FkZJo4PgCRfVvsz4Nacqwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tapas Roy",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "2024-07-08",
+									"description": "yyyy-mm-dd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/authors",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/authors/?page=1&per_page=2",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/authors/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "author id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJuYXNpcjcxIiwiYXV0aG9yIjp7ImlkIjozLCJ1c2VyX2lkIjo4LCJuYW1lIjoiTmFzaXIgVWRkaW4iLCJiaW8iOiJ0ZXN0IiwiYmlydGhkYXRlIjoiMjAyNC0wNy0wOCIsInN0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NDozOC43MDJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NDozOC43MDJaIn0sImlhdCI6MTcyMDQ1MDEyNiwiZXhwIjoxNzIwNDUzNzI2fQ.GePWgDVys-uCup2_EIWaEoOK2BjDswYV_Oy8orBYSyY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Nasir Uddin Shan",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "Test Test",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "2024-07-08",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/authors/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "author id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete author",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJuYXNpcjcxIiwiYXV0aG9yIjp7ImlkIjozLCJ1c2VyX2lkIjo4LCJuYW1lIjoiTmFzaXIgVWRkaW4iLCJiaW8iOiJ0ZXN0IiwiYmlydGhkYXRlIjoiMjAyNC0wNy0wOCIsInN0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NDozOC43MDJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NDozOC43MDJaIn0sImlhdCI6MTcyMDQ1MDEyNiwiZXhwIjoxNzIwNDUzNzI2fQ.GePWgDVys-uCup2_EIWaEoOK2BjDswYV_Oy8orBYSyY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Url}}/authors/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "author id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author all book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/authors/:id/books/?page=2&per_page=2",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"authors",
+								":id",
+								"books",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "author id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Create new book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidGFwYXM3MSIsImF1dGhvciI6eyJpZCI6NSwidXNlcl9pZCI6MTAsIm5hbWUiOiJUYXBhcyBSb3kiLCJiaW8iOiJ0ZXN0IiwiYmlydGhkYXRlIjoiMjAyNC0wNy0wOCIsInN0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIn0sImlhdCI6MTcyMDQ2MDM4OSwiZXhwIjoxNzIwNDYzOTg5fQ.hwCPx60SbglYXUwbR_KLQ0vjlVKaMDGZ5GaI2tPKdXM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Test Book",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Test Description",
+									"type": "text"
+								},
+								{
+									"key": "published_date",
+									"value": "2024-08-08",
+									"description": "yyyy-mm-dd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/books",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/books/?page=1&per_page=3&title=Test&author_name=",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "3"
+								},
+								{
+									"key": "title",
+									"value": "Test"
+								},
+								{
+									"key": "author_name",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/books/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12",
+									"description": "book id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidGFwYXM3MSIsImF1dGhvciI6eyJpZCI6NSwidXNlcl9pZCI6MTAsIm5hbWUiOiJUYXBhcyBSb3kiLCJiaW8iOiJ0ZXN0IiwiYmlydGhkYXRlIjoiMjAyNC0wNy0wOCIsInN0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIn0sImlhdCI6MTcyMDQ2MDM4OSwiZXhwIjoxNzIwNDYzOTg5fQ.hwCPx60SbglYXUwbR_KLQ0vjlVKaMDGZ5GaI2tPKdXM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "New Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "New Description",
+									"type": "text"
+								},
+								{
+									"key": "published_date",
+									"value": "2024-08-08",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/books/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "9",
+									"description": "book id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidGFwYXM3MSIsImF1dGhvciI6eyJpZCI6NSwidXNlcl9pZCI6MTAsIm5hbWUiOiJUYXBhcyBSb3kiLCJiaW8iOiJ0ZXN0IiwiYmlydGhkYXRlIjoiMjAyNC0wNy0wOCIsInN0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIiwidXBkYXRlZEF0IjoiMjAyNC0wNy0wOFQxNDo0NTo0MS42MzhaIn0sImlhdCI6MTcyMDQ2MDM4OSwiZXhwIjoxNzIwNDYzOTg5fQ.hwCPx60SbglYXUwbR_KLQ0vjlVKaMDGZ5GaI2tPKdXM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{Url}}/books/:id",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "11",
+									"description": "book id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author all book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{Url}}/books/author/:id/?page=1&per_page=2",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"books",
+								"author",
+								":id",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "2"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "author id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
