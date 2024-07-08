@@ -25,12 +25,10 @@ A RESTful API for managing a bookstore, including user authentication, author, a
 ### Step 5: Import Postman collection
 - Check the root directory for the `Bookstore.postman_collection.json` file and import it into Postman.
 ### Step 6: Install dependencies and start the server
-```bash
-npm install -g node-gyp
-yarn or yarn install
-yarn build
-yarn dev
-```
+- `npm install -g node-gyp`
+- `yarn`
+- `yarn build`
+- `yarn dev`
 
 # Open Browser
 Visit [http://localhost:3000/](http://localhost:3000/) to access the application.
