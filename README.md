@@ -1,13 +1,19 @@
-# bookstore
-Task: Create a RESTful API for a Bookstore
+# Bookstore RESTful API
+A RESTful API for managing a bookstore, including user authentication, author, and book management.
 
 # Configuration
-- Step 1: Create a .env file in root directory
-- Step 2: Copy example.env file & paste into .env file
-- Step 3: Update .env file like DB_DATABASE, DB_USERNAME, DB_PASSWORD, JWT_SECRET
-- Step 4: Import database check root directory "bookstore.sql"
-- Step 5: Import postman collection check root directory "Bookstore.postman_collection.json"
-- Step 6: install dependencies by following command
+- Step 1: Create a .env file in the root directory
+- Step 2: Copy the contents of example.env into the .env file
+- tep 3: Update the .env file with your database and JWT configuration:
+    - `DB_DATABASE`: Name of your database
+    - `DB_USERNAME`: Database username
+    - `DB_PASSWORD`: Database password
+    - `JWT_SECRET`: Secret key for JWT
+- Step 4: Import the database
+    - Check the root directory for the `bookstore.sql` file and import it into your database.
+- Step 5: Import Postman collection
+    - Check the root directory for the `Bookstore.postman_collection.json` file and import it into Postman.
+- Step 6: Install dependencies and start the server
 ```
 npm install -g node-gyp
 yarn or yarn install
@@ -16,86 +22,94 @@ yarn dev
 ```
 
 # Open Browser
-[http://localhost:3000/](http://localhost:3000/)
+Visit [http://localhost:3000/](http://localhost:3000/) to access the application.
 
-# Warning: All Privates using rules
-- Step 1: Generate a token by useing sigin route
-- generate token using postman Headers
-- Example Authorization = Bearer token
+# Authentication and Authorization
+### Generate a Token
+- Use the signin route to generate a token.
+- Include the token in the Authorization header for private routes.
+- Example: Authorization: Bearer <token>
 
 # Routes
 ### Auth Public Routes
-```
-Methods: POST
-URL: http://localhost:300/signup
-
-Method: POST
-URL: http://localhost:300/sigin
-```
+- Signup
+    - Method: POST
+    - URL: http://localhost:3000/signup
+    - Description: Create a new user account.
+- Signin
+    - Method: POST
+    - URL: http://localhost:3000/signin
+    - Description: Authenticate a user and generate a token.
 
 ### Auth Private Routes
-```
-Methods: GET
-URL: http://localhost:300/profile/:id
-
-Methods: PUT
-URL: http://localhost:300/profile/:id
-
-Methods: DELETE
-URL: http://localhost:300/profile/:id
-```
+- Get User Profile
+    - Method: GET
+    - URL: http://localhost:3000/profile/:id
+    - Description: Retrieve the profile of the authenticated user.
+- Update User Profile
+    - Method: PUT
+    - URL: http://localhost:3000/profile/:id
+    - Description: Update the profile of the authenticated user.
+- Delete User Profile
+    - Method: DELETE
+    - URL: http://localhost:3000/profile/:id
+    - Description: Delete the profile of the authenticated user.
 
 ### Author Public Routes
-```
-Methods: GET
-URL: http://localhost:300/authors
-Optional: /?page=1&per_page=10
-
-Methods: GET
-URL: http://localhost:300/authors/:id
-
-Methods: GET
-URL: http://localhost:300/authors/:id/books
-Optional: /?page=1&per_page=10
-```
+- Get All Authors
+    - Method: GET
+    - URL: http://localhost:3000/authors
+    - Description: Retrieve a list of all authors.
+    - Optional Query Params: /?page=1&per_page=10
+- Get Author by ID
+    - Method: GET
+    - URL: http://localhost:3000/authors/:id
+    - Description: Retrieve details of a specific author.
+- Get Books by Author
+    - Method: GET
+    - URL: http://localhost:3000/authors/:id/books
+    - Description: Retrieve a list of all books written by a specific author.
+    - Optional Query Params: /?page=1&per_page=10
 
 ### Author Private Routes
-```
-Methods: POST
-URL: http://localhost:300/authors
-
-Methods: PUT
-URL: http://localhost:300/authors/:id
-
-Methods: DELETE
-URL: http://localhost:300/authors/:id
-```
+- Create Author
+    - Method: POST
+    - URL: http://localhost:3000/authors
+    - Description: Create a new author.
+- Update Author
+    - Method: PUT
+    - URL: http://localhost:3000/authors/:id
+    - Description: Update details of a specific author.
+- Delete Author
+    - Method: DELETE
+    - URL: http://localhost:3000/authors/:id
+    - Description: Delete a specific author.
 
 ### Book Public Routes
-```
-Methods: GET
-URL: http://localhost:300/books
-Optional: /?page=1&per_page=10&title=Abc&author_name=ABC
-
-Methods: GET
-URL: http://localhost:300/books/:id
-
-Methods: GET
-URL: http://localhost:300/books/author/:id
-Optional: /?page=1&per_page=10
-```
+- Get All Books
+    - Method: GET
+    - URL: http://localhost:3000/books
+    - Description: Retrieve a list of all books.
+    - Optional Query Params: /?page=1&per_page=10&title=Abc&author_name=ABC
+- Get Book by ID
+    - Method: GET
+    - URL: http://localhost:3000/books/:id
+    - Description: Retrieve details of a specific book.
+- Get Books by Author ID
+    - Method: GET
+    - URL: http://localhost:3000/books/author/:id
+    - Description: Retrieve a list of all books by a specific author.
+    - Optional Query Params: /?page=1&per_page=10
 
 ### Book Private Routes
 - Create Book
     - Methods: POST
     - URL: http://localhost:300/books
     - Description: Create a new book.
-
 - Update Book
     - Methods: PUT
     - URL: http://localhost:300/books/:id
     - Description: Update details of a specific book.
-
 - Delete Book
     - Methods: DELETE
     - URL: http://localhost:300/books/:id
