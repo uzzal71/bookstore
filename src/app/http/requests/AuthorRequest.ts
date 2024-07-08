@@ -2,9 +2,13 @@ import Joi from 'joi';
 import { IAuthor } from '@Entities/IAuthor';
 
 export const AuthorRequest = Joi.object<IAuthor>({
-    user_id: Joi.optional(),
-    name: Joi.string().required(),
-    bio: Joi.string().required(),
-    birthdate: Joi.string().required(),
-    status: Joi.boolean()
+    name: Joi.string().min(3).required().messages({
+        'string.empty': 'Name cannot be an empty string',
+        'string.min': 'Name cannot be an empty string'
+    }),
+    bio: Joi.string().allow('').optional(),
+    birthdate: Joi.string().pattern(/^\d{4}-\d{2}-\d{2}$/).required().messages({
+        'string.pattern.base': 'Birthdate must be in the format yyyy-mm-dd'
+    }),
+    status: Joi.boolean().optional()
 });

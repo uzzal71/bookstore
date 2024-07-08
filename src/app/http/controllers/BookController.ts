@@ -17,7 +17,7 @@ export class BookController {
         try {
             await validateRequest(BookRequest, _req, res);
             const authorId = parseInt(_req?.user?.author?.id);
-            if (!authorId) return ResponseError(res, 500, 'Author not found');
+            if (!authorId) return ResponseError(res, 500, 'Author not found, please create a new author');
             const author = await Author.findOne({ where: { id: authorId, user_id: _req?.user?.id} });
             if (!author) return ResponseError(res, 404, 'Author not found or not authorized to create a book');
 

@@ -13,7 +13,7 @@ class Author extends Model<Author> implements IAuthor {
     id: number;
 
     @ForeignKey(() => User)
-    @Column({ type: DataType.INTEGER })
+    @Column({ type: DataType.INTEGER, unique: true })
     user_id: number;
 
     @Column({ type: DataType.STRING })
